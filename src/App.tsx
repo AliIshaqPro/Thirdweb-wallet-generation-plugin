@@ -4,7 +4,6 @@ import { inAppWallet } from "thirdweb/wallets";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-const WP_JWT = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY0MTkwMzYsImV4cCI6MTczNjQyMjYzNiwiaXNzIjoiaHR0cHM6Ly9nb2xkZW5yb2QtaG9yc2UtNjMwNjM5Lmhvc3RpbmdlcnNpdGUuY29tIiwiZGF0YSI6eyJ1c2VySWQiOjYxLCJ1c2VybmFtZSI6ImV3Y2hhbm5lbDc4NiIsImVtYWlsIjoiZXdjaGFubmVsNzg2QGdtYWlsLmNvbSJ9fQ.OF4_HZoxio2OnJygdfUznBnl9q9D9d9DUDfXab20V3w`;
 
 const TEST_CLIENT_ID = "f0b4cf240217a520f3ca643b912e78d6";
 
@@ -18,6 +17,23 @@ export default function App() {
     const handleWalletConnection = async () => {
       try {
         setStatus("Initializing Thirdweb client...");
+
+        // Retrieve JWT from local storage
+        const WP_JWT = localStorage.getItem("jwtToken");
+
+        if (!WP_JWT) {
+          throw new Error("JWT not found in local storage.");
+        }
+
+        console.log("Retrieved JWT:", WP_JWT);
+
+        // Validate the token structure by decoding it
+        try {
+          const decoded = jwtDecode(WP_JWT);
+          console.log("Decoded JWT:", decoded);
+        } catch (error) {
+          throw new Error("Invalid JWT format.");
+        }
 
         // Set headers for API calls
         const headers = {
@@ -37,14 +53,14 @@ export default function App() {
         const JWT_TOKEN = data.data;
 
         // Decode JWT token to inspect its structure
-        const decoded = jwtDecode<{ email: string, sub: string }>(JWT_TOKEN);
-        console.log("Decoded JWT:", decoded); // Log the full decoded token
+        const decoded = jwtDecode<{ email: string; sub: string }>(JWT_TOKEN);
+        console.log("Decoded JWT:", decoded);
 
         // Access the email and user ID directly from the decoded token
         const email = decoded?.email;
         const userId = decoded?.sub; // Extract the user ID
-        console.log("Extracted Email:", email); // Log the extracted email
-        console.log("Extracted User ID:", userId); // Log the extracted user ID
+        console.log("Extracted Email:", email);
+        console.log("Extracted User ID:", userId);
 
         // Step 2: Connect wallet using Thirdweb
         const wallet = inAppWallet();
@@ -62,7 +78,11 @@ export default function App() {
         const wpApiUrl =
           "https://goldenrod-horse-630639.hostingersite.com/wp-json/custom/v1/store-wallet";
         setStatus("Sending wallet address, email, and user ID to WordPress...");
-        await axios.post(wpApiUrl, { walletAddress: account.address, email, userId }, { headers });
+        await axios.post(
+          wpApiUrl,
+          { walletAddress: account.address, email, userId },
+          { headers }
+        );
 
         setStatus("Wallet address, email, and user ID sent to WordPress successfully!");
 

@@ -2,7 +2,6 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import { ThirdwebProvider } from "thirdweb/react";
-import { client } from "./client"; // Ensure this is correctly exported and configured
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
