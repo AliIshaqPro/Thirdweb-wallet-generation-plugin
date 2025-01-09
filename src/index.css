@@ -1,0 +1,14 @@
+.css-mp2ple, svg {
+  display: none !important;
+}
+
+h2{
+  display: none !important;
+}
+.css-d2gn4m {
+  border: none !important;
+  padding: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  overflow: hidden !important; /* Ensures no content spills out */
+}
