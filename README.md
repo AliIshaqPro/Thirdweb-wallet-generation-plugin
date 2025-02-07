@@ -1,64 +1,53 @@
 
 ![tw-banner](https://github.com/thirdweb-example/vite-starter/assets/57885104/cfe2164b-b50b-4d8e-aaaa-31331da2d647)
 
-# vite-starter
+# 🚀 Thirdweb Wallet Generation Plugin for WordPress  
 
-Starter template to build onchain applications with [thirdweb](https://thirdweb.com) and [vite](https://vitejs.dev/). 
+A **WordPress plugin** that integrates **Thirdweb** wallet generation using **React (Vite), PHP, and Composer**. This plugin allows users to **create and connect blockchain wallets** within WordPress, making it ideal for **NFT marketplaces, Web3 applications, and crypto-powered platforms**.  
 
-## Features 
+---
 
-- thirdweb & vite pre-installed and configured to reduce setup steps
-- ConnectButton to onboard users to your application
+## ✨ Features  
 
-## Installation
+- ✅ **Wallet Generation** – Automatically creates a Thirdweb wallet upon user registration.  
+- ✅ **Wallet Connection** – Enables users to connect their Thirdweb wallet via a React-powered UI.  
+- ✅ **Database Integration** – Stores wallet addresses securely in the WordPress database.  
+- ✅ **API Integration** – Sends wallet details to a custom backend API for further processing.  
+- ✅ **Secure & Scalable** – Uses Composer for PHP dependency management and Vite for fast React builds.  
 
-Install the template using [thirdweb create](https://portal.thirdweb.com/cli/create)
+---
 
-```bash
-  npx thirdweb create app --vite
-```
+## 🛠️ Tech Stack  
 
-## Environment Variables
+| Stack     | Technology  |
+|-----------|------------|
+| **Frontend**  | React (Vite) + Thirdweb SDK |
+| **Backend**  | PHP + Composer |
+| **Database**  | WordPress (MySQL) |
 
-To run this project, you will need to add the following environment variables to your .env file:
+---
 
-`CLIENT_ID`
+## 🚀 Installation  
 
-To learn how to create a client ID, refer to the [client documentation](https://portal.thirdweb.com/typescript/v5/client). 
+### 1️⃣ Clone the Repository  
+```sh
+cd wp-content/plugins/
+git clone https://github.com/your-repo/thirdweb-wallet-wordpress.git
 
-## Run locally
-
-Install dependencies
-
-```bash
-yarn
-```
-
-Start development server
-
-```bash
-yarn dev
-```
-
-Create a production build
-
-```bash
-yarn build
-```
-
-Preview the production build
-
-```bash
-yarn preview
-```
-
-## Additional Resources
-
-- [Documentation](https://portal.thirdweb.com/typescript/v5)
-- [Templates](https://thirdweb.com/templates)
-- [YouTube](https://www.youtube.com/c/thirdweb)
-- [Blog](https://blog.thirdweb.com)
-
-## Need help?
-
-For help or feedback, please [visit our support site](https://thirdweb.com/support)
+2️⃣ Install PHP Dependencies
+sh
+Copy
+Edit
+cd thirdweb-wallet-wordpress
+composer install
+3️⃣ Activate the Plugin
+Go to WordPress Admin Panel → Plugins
+Find Thirdweb Wallet Plugin and click Activate
+4️⃣ Configure Thirdweb
+Navigate to the plugin settings and enter your Thirdweb API credentials.
+⚡ Usage
+Users can register and connect their Thirdweb wallets via the React-powered UI.
+Wallet details are stored in the WordPress database and sent to an API endpoint.
+Developers can extend the plugin to support custom blockchain interactions.
+📜 License
+This project is open-source under the MIT License. Feel free to contribute!
