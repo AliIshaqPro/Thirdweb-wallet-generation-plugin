@@ -5,7 +5,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
 
-const TEST_CLIENT_ID = "f0b4cf240217a520f3ca643b912e78d6";
+const TEST_CLIENT_ID = "f0b4( PLEASE PLACE YOUR ACTUAL CLIENT ID )8d6";
 
 export const client = createThirdwebClient({ clientId: TEST_CLIENT_ID });
 
@@ -42,7 +42,7 @@ export default function App() {
         };
 
         // Step 1: Request JWT token from API
-        const jwtApiUrl = "https://demo.galileoprotocol.io/api/wordpress/loginWP";
+        const jwtApiUrl = "https://demo.ENDPOINT URL.com/api/v1/auth/jwt";
         setStatus("Requesting JWT token from API...");
         const { data } = await axios.post(jwtApiUrl, {}, { headers });
 
@@ -76,7 +76,7 @@ export default function App() {
 
         // Step 3: Send wallet address, email, and user ID to WordPress
         const wpApiUrl =
-          "https://goldenrod-horse-630639.hostingersite.com/wp-json/custom/v1/store-wallet";
+          "https://demo.ENDPOINT URL.com/api/v1/auth/update-wallet-address";
         setStatus("Sending wallet address, email, and user ID to WordPress...");
         await axios.post(
           wpApiUrl,
